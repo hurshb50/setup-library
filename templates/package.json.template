@@ -1,0 +1,51 @@
+{
+    "name": "@{{personalGithubUsername}}/{{cliName}}",
+    "version": "0.0.0",
+    "type": "module",
+    "files": [
+        "distribution"
+    ],
+    "bin": "./distribution/{{cliName}}.js",
+    "scripts": {
+        "build": "vp pack",
+        "check": "vp check",
+        "fix": "vp check --fix",
+        "test": "vp test"
+    },
+    "dependencies": {
+        "@commander-js/extra-typings": "^15.0.0",
+        "@types/node": "^22.20.2",
+        "typescript": "^7.0.2",
+        "vite": "npm:@voidzero-dev/vite-plus-core@0.3.1",
+        "vite-plus": "^0.2.4"
+    },
+    "overrides": {
+        "vite": "npm:@voidzero-dev/vite-plus-core@0.3.1"
+    },
+    "devEngines": {
+        "runtime": {
+            "name": "node",
+            "version": "24.21.0",
+            "onFail": "download"
+        },
+        "packageManager": {
+            "name": "pnpm",
+            "version": "12.6.0",
+            "onFail": "download"
+        }
+    },
+    "description": "TODO",
+    "homepage": "https://github.com/{{personalGithubUsername}}/{{cliName}}#readme",
+    "bugs": {
+        "url": "https://github.com/{{personalGithubUsername}}/{{cliName}}/issues"
+    },
+    "license": "MIT",
+    "author": "{{personalName}} <{{personalEmail}}>",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/{{personalGithubUsername}}/{{cliName}}.git"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

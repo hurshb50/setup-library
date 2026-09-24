@@ -1,0 +1,61 @@
+{
+    "name": "@hurshb50/setup-cli",
+    "version": "1.0.9",
+    "type": "module",
+    "files": [
+        "distribution"
+    ],
+    "bin": "./distribution/setup-cli.mjs",
+    "scripts": {
+        "build": "vp pack",
+        "check": "vp check",
+        "fix": "vp check --fix",
+        "test": "vp test"
+    },
+    "dependencies": {
+        "@commander-js/extra-typings": "^15.0.0",
+        "@types/node": "^22.20.2",
+        "handlebars": "^4.7.9",
+        "typescript": "^7.0.2",
+        "vite": "npm:@voidzero-dev/vite-plus-core@0.3.1",
+        "vite-plus": "^0.2.4"
+    },
+    "overrides": {
+        "vite": "npm:@voidzero-dev/vite-plus-core@0.3.1"
+    },
+    "devEngines": {
+        "runtime": {
+            "name": "node",
+            "version": "24.21.0",
+            "onFail": "download"
+        },
+        "packageManager": {
+            "name": "pnpm",
+            "version": "12.6.0",
+            "onFail": "download"
+        }
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "description": "This tool helps to scaffold a CLI that you can publish to NPM with Vite+.",
+    "homepage": "https://github.com/hurshb50/setup-cli#readme",
+    "license": "MIT",
+    "author": "Hursh Patel <hurshb50@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hurshb50/setup-cli.git"
+    },
+    "keywords": [
+        "cli",
+        "scaffold",
+        "scaffolding",
+        "generator",
+        "template",
+        "boilerplate",
+        "starter",
+        "typescript",
+        "vite",
+        "npx"
+    ]
+}

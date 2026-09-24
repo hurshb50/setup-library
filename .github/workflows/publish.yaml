@@ -1,0 +1,94 @@
+name: Publish
+
+on:
+    workflow_dispatch:
+        inputs:
+            bump:
+                description: Version Bump
+                required: true
+                default: patch
+                type: choice
+                options:
+                    - patch
+                    - minor
+                    - major
+
+concurrency:
+    group: publish
+    cancel-in-progress: false
+
+permissions:
+    contents: read
+
+jobs:
+    validation:
+        name: ${{ matrix.name }}
+        runs-on: ${{ matrix.runner }}
+        timeout-minutes: 45
+        strategy:
+            fail-fast: true
+            matrix:
+                include:
+                    - name: Code Checks
+                      runner: ubuntu-slim
+                      command: vp run check
+
+                    - name: Run Tests
+                      runner: ubuntu-slim
+                      command: vp run test
+
+                    - name: Build Application
+                      runner: ubuntu-slim
+                      command: vp run build
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v7
+              with:
+                  lfs: true
+
+            - name: Set up Vite+
+              uses: voidzero-dev/setup-vp@v1.20.0
+              with:
+                  cache: true
+
+            - name: Install Dependencies
+              run: vp install --frozen-lockfile
+
+            - name: ${{ matrix.name }}
+              run: ${{ matrix.command }}
+
+    publish:
+        needs:
+            - validation
+        runs-on: ubuntu-slim
+        permissions:
+            contents: write
+            id-token: write
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v7
+              with:
+                  fetch-depth: 0
+                  lfs: true
+
+            - name: Set up Vite+
+              uses: voidzero-dev/setup-vp@v1.20.0
+              with:
+                  cache: true
+
+            - name: Install Dependencies
+              run: vp install --frozen-lockfile
+
+            - name: Build Application
+              run: vp run build
+
+            - name: Bump Version
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  vp pm version "${{ inputs.bump }}"
+                  git push origin HEAD
+                  git push origin "v$(node -p "require('./package.json').version")"
+
+            - name: Publish to npm
+              run: vp pm stage publish
