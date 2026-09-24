@@ -5,11 +5,11 @@ Scaffolds a TypeScript library that publishes to npm through GitHub. The generat
 ## Usage
 
 ```bash
-vpx @hurshb50/setup-library <library-name> --personal-github-username <username> --personal-name <name> --personal-email <email>
+vpx @hurshb50/setup-library@latest <library-name> --personal-github-username <username> --personal-name <name> --personal-email <email>
 ```
 
 ```bash
-vpx @hurshb50/setup-library hello-library --personal-github-username hurshb50 --personal-name "Hursh Patel" --personal-email hurshb50@gmail.com
+vpx @hurshb50/setup-library@latest hello-library --personal-github-username hurshb50 --personal-name "Hursh Patel" --personal-email hurshb50@gmail.com
 ```
 
 Pass `--directory <path>` to generate the project somewhere other than `./<library-name>`.
