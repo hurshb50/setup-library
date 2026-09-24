@@ -1,11 +1,11 @@
 {
-    "name": "@hurshb50/setup-cli",
+    "name": "@hurshb50/setup-library",
     "version": "1.0.9",
     "type": "module",
     "files": [
         "distribution"
     ],
-    "bin": "./distribution/setup-cli.mjs",
+    "bin": "./distribution/setup-library.mjs",
     "scripts": {
         "build": "vp pack",
         "check": "vp check",
@@ -38,16 +38,16 @@
     "publishConfig": {
         "access": "public"
     },
-    "description": "This tool helps to scaffold a CLI that you can publish to NPM with Vite+.",
-    "homepage": "https://github.com/hurshb50/setup-cli#readme",
+    "description": "This tool helps to scaffold a library that you can publish to NPM with Vite+.",
+    "homepage": "https://github.com/hurshb50/setup-library#readme",
     "license": "MIT",
     "author": "Hursh Patel <hurshb50@gmail.com>",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/hurshb50/setup-cli.git"
+        "url": "git+https://github.com/hurshb50/setup-library.git"
     },
     "keywords": [
-        "cli",
+        "library",
         "scaffold",
         "scaffolding",
         "generator",
@@ -56,6 +56,6 @@
         "starter",
         "typescript",
         "vite",
-        "npx"
+        "npm"
     ]
 }

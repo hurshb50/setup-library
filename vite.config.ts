@@ -14,7 +14,7 @@ const configuration = defineConfig({
         },
     },
     pack: {
-        entry: "./source/setup-cli.ts",
+        entry: "./source/setup-library.ts",
         outDir: "distribution",
         copy: ["assets", "templates"],
     },

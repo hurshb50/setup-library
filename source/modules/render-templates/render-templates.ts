@@ -5,7 +5,7 @@ import path from "path";
 export async function renderTemplates(
     currentDirectoryPath: string,
     temporaryDirectoryPath: string,
-    cliName: string,
+    libraryName: string,
     personalGithubUsername: string,
     personalName: string,
     personalEmail: string,
@@ -27,7 +27,7 @@ export async function renderTemplates(
         const renderTemplate = handlebars.compile(templateFileContent);
 
         const renderedFileContent = renderTemplate({
-            cliName,
+            libraryName,
             personalGithubUsername,
             personalName,
             personalEmail,

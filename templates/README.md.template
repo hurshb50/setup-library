@@ -1,4 +1,4 @@
-# {{cliName}}
+# {{libraryName}}
 
 ## Publishing
 
@@ -17,7 +17,7 @@ CI uses npm's OIDC trusted publishing and staged publishing. No npm token. Nothi
    git init -b main
    git add .
    git commit -m "Initial commit"
-   gh repo create {{cliName}} --public --source . --remote origin --push
+   gh repo create {{libraryName}} --public --source . --remote origin --push
    ```
 
 2. Log in to npm.
@@ -37,7 +37,7 @@ CI uses npm's OIDC trusted publishing and staged publishing. No npm token. Nothi
 4. Allow GitHub Actions to publish. In the package settings on npmjs.com, add a GitHub Actions trusted publisher.
 
    - Organization or user: `{{personalGithubUsername}}`
-   - Repository: `{{cliName}}`
+   - Repository: `{{libraryName}}`
    - Workflow filename: `publish.yaml`
    - Allowed actions: staged publishing only
 

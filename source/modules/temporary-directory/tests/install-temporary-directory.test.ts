@@ -13,15 +13,15 @@ const { execSyncMock } = vi.hoisted(() => ({ execSyncMock: vi.fn() }));
 vi.mock("child_process", () => ({ default: { execSync: execSyncMock } }));
 
 describe("installTemporaryDirectory", () => {
-    it("installs dependencies in the temporary directory, copies it to the CLI directory, and initializes git", async () => {
+    it("installs dependencies in the temporary directory, copies it to the library directory, and initializes git", async () => {
         const temporaryDirectoryPath = await temporaryDirectories.create();
         await fs.writeFile(path.join(temporaryDirectoryPath, "example.txt"), "content");
 
-        const cliDirectoryPath = path.join(await temporaryDirectories.create(), "my-cli");
+        const libraryDirectoryPath = path.join(await temporaryDirectories.create(), "my-library");
 
-        await installTemporaryDirectory(temporaryDirectoryPath, cliDirectoryPath);
+        await installTemporaryDirectory(temporaryDirectoryPath, libraryDirectoryPath);
 
-        const copiedFileContent = await fs.readFile(path.join(cliDirectoryPath, "example.txt"), "utf8");
+        const copiedFileContent = await fs.readFile(path.join(libraryDirectoryPath, "example.txt"), "utf8");
         expect(copiedFileContent).toBe("content");
 
         expect(execSyncMock).toHaveBeenCalledWith("vp install", {
@@ -29,7 +29,7 @@ describe("installTemporaryDirectory", () => {
             stdio: "inherit",
         });
         expect(execSyncMock).toHaveBeenCalledWith("git init -b main", {
-            cwd: cliDirectoryPath,
+            cwd: libraryDirectoryPath,
             stdio: "inherit",
         });
     });

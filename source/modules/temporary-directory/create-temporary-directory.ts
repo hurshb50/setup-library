@@ -4,7 +4,7 @@ import fs from "fs/promises";
 
 export async function createTemporaryDirectory(): Promise<string> {
     const systemTemporaryDirectoryPath = os.tmpdir();
-    const temporaryDirectoryPathPrefix = path.join(systemTemporaryDirectoryPath, "setup-cli");
+    const temporaryDirectoryPathPrefix = path.join(systemTemporaryDirectoryPath, "setup-library");
     const temporaryDirectoryPath = await fs.mkdtemp(temporaryDirectoryPathPrefix);
 
     return temporaryDirectoryPath;

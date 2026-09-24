@@ -14,9 +14,9 @@ const configuration = defineConfig({
         },
     },
     pack: {
-        entry: "./source/{{cliName}}.ts",
+        entry: "./source/{{libraryName}}.ts",
         outDir: "distribution",
-        copy: [],
+        dts: true,
     },
     test: { passWithNoTests: true },
 });
