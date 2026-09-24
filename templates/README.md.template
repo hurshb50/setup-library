@@ -41,19 +41,10 @@ CI uses npm's OIDC trusted publishing and staged publishing. No npm token. Nothi
    - Workflow filename: `publish.yaml`
    - Allowed actions: staged publishing only
 
-5. Optional: in package settings under Publishing access, set "Require two-factor authentication and disallow tokens". CI still works through OIDC.
+5. In package settings under Publishing access, set "Require two-factor authentication and disallow tokens". CI still works through OIDC.
 
 ## Releasing a version
 
-```bash
-gh workflow run publish.yaml -f bump=patch
-```
-
-Use `minor` or `major` instead of `patch` when it fits. Then approve the staged package.
-
-```bash
-vp pm stage list
-vp pm stage approve <stage-id>
-```
-
-You can also approve on npmjs.com under Staged Packages. The Release workflow creates the GitHub release on its weekly run. Run `gh workflow run release.yaml` to do it now.
+1. Run the publish workflow on GitHub
+2. Approve the staged package on npm
+3. (Optional) Run the release workflow on GitHub
